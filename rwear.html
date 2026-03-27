@@ -1,0 +1,1106 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww25400\viewh13140\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="es">\
+<head>\
+<meta charset="UTF-8"/>\
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>\
+<title>ReWear \'b7 Moda Circular</title>\
+<link rel="preconnect" href="https://fonts.googleapis.com"/>\
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>\
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;0,700;1,300;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>\
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>\
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>\
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>\
+<style>\
+*,*::before,*::after\{box-sizing:border-box;margin:0;padding:0\}\
+:root\{\
+  --cream:#f7f4ee;--warm-white:#fefcf8;--beige:#e8e0d0;--sand:#d4c8b0;\
+  --olive:#7a8c6e;--olive-dark:#4a5c40;--olive-light:#a8bc98;\
+  --terra:#c4865c;--brown:#6b4f3a;--charcoal:#2c2820;\
+  --text:#3a3530;--text-light:#7a7268;--white:#ffffff;\
+  --shadow:0 4px 24px rgba(44,40,32,0.08);\
+  --shadow-hover:0 8px 40px rgba(44,40,32,0.15);\
+  --radius:16px;--radius-sm:10px;--radius-full:9999px;\
+\}\
+body\{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden\}\
+.app\{min-height:100vh\}\
+.serif\{font-family:'Fraunces',serif\}\
+@keyframes fadeUp\{from\{opacity:0;transform:translateY(20px)\}to\{opacity:1;transform:translateY(0)\}\}\
+@keyframes fadeIn\{from\{opacity:0\}to\{opacity:1\}\}\
+@keyframes float\{0%,100%\{transform:translateY(0)\}50%\{transform:translateY(-6px)\}\}\
+.animate-fadeup\{animation:fadeUp 0.5s ease forwards\}\
+.animate-fadein\{animation:fadeIn 0.3s ease\}\
+/* NAV */\
+.nav\{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,244,238,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--beige);padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between\}\
+.nav-logo\{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--olive-dark);display:flex;align-items:center;gap:8px;cursor:pointer\}\
+.nav-logo span\{font-style:italic;color:var(--terra)\}\
+.nav-actions\{display:flex;align-items:center;gap:12px\}\
+.nav-tab\{padding:8px 16px;border-radius:var(--radius-full);font-size:14px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--text-light);transition:all 0.2s;font-family:'DM Sans',sans-serif\}\
+.nav-tab:hover\{background:var(--beige);color:var(--text)\}\
+.nav-tab.active\{background:var(--charcoal);color:var(--white)\}\
+.nav-avatar\{width:36px;height:36px;border-radius:50%;object-fit:cover;cursor:pointer;border:2px solid var(--olive-light)\}\
+/* BOTTOM NAV */\
+.bottom-nav\{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(247,244,238,0.96);backdrop-filter:blur(20px);border-top:1px solid var(--beige);padding:8px 0\}\
+.bottom-nav-inner\{display:flex;justify-content:space-around\}\
+.bnav-btn\{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 16px;border:none;background:none;cursor:pointer;color:var(--text-light);font-size:10px;font-family:'DM Sans',sans-serif;transition:color 0.2s\}\
+.bnav-btn.active\{color:var(--olive-dark)\}\
+.bnav-btn svg\{width:22px;height:22px\}\
+/* BUTTONS */\
+.btn\{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 24px;border-radius:var(--radius-full);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all 0.2s;white-space:nowrap\}\
+.btn-primary\{background:var(--charcoal);color:var(--white)\}\
+.btn-primary:hover\{background:var(--text);transform:translateY(-1px);box-shadow:var(--shadow-hover)\}\
+.btn-olive\{background:var(--olive);color:var(--white)\}\
+.btn-olive:hover\{background:var(--olive-dark);transform:translateY(-1px)\}\
+.btn-outline\{background:transparent;border:1.5px solid var(--charcoal);color:var(--charcoal)\}\
+.btn-outline:hover\{background:var(--charcoal);color:var(--white)\}\
+.btn-ghost\{background:var(--beige);color:var(--text)\}\
+.btn-ghost:hover\{background:var(--sand)\}\
+.btn-sm\{padding:8px 16px;font-size:13px\}\
+.btn-lg\{padding:16px 32px;font-size:16px\}\
+.btn-icon\{padding:10px;border-radius:var(--radius-full)\}\
+/* CARDS */\
+.card\{background:var(--warm-white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:all 0.3s\}\
+.card:hover\{box-shadow:var(--shadow-hover);transform:translateY(-2px)\}\
+/* ITEM CARD */\
+.item-card\{position:relative;cursor:pointer\}\
+.item-card-img\{width:100%;aspect-ratio:3/4;object-fit:cover\}\
+.item-card-body\{padding:14px\}\
+.item-card-title\{font-size:14px;font-weight:600;margin-bottom:4px\}\
+.item-card-meta\{font-size:12px;color:var(--text-light);display:flex;justify-content:space-between;align-items:center\}\
+.item-card-price\{font-weight:700;color:var(--olive-dark);font-size:15px\}\
+.item-card-badge\{position:absolute;top:12px;left:12px;background:var(--charcoal);color:white;font-size:11px;font-weight:600;padding:4px 10px;border-radius:var(--radius-full)\}\
+.item-card-like\{position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.9);border:none;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;backdrop-filter:blur(4px);transition:transform 0.2s\}\
+.item-card-like:hover\{transform:scale(1.15)\}\
+/* GRID */\
+.items-grid\{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px\}\
+/* FILTERS */\
+.filters-bar\{display:flex;gap:10px;flex-wrap:wrap;padding:16px 0\}\
+.filter-chip\{padding:8px 18px;border-radius:var(--radius-full);font-size:13px;font-weight:500;cursor:pointer;border:1.5px solid var(--beige);background:var(--warm-white);color:var(--text-light);transition:all 0.2s;font-family:'DM Sans',sans-serif\}\
+.filter-chip:hover,.filter-chip.active\{background:var(--charcoal);color:var(--white);border-color:var(--charcoal)\}\
+/* SEARCH */\
+.search-input\{width:100%;padding:14px 20px 14px 48px;border-radius:var(--radius-full);border:1.5px solid var(--beige);background:var(--warm-white);font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text);outline:none;transition:border-color 0.2s\}\
+.search-input:focus\{border-color:var(--olive)\}\
+.search-wrap\{position:relative\}\
+.search-icon\{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text-light);pointer-events:none\}\
+/* INPUT */\
+.input\{width:100%;padding:14px 18px;border-radius:var(--radius-sm);border:1.5px solid var(--beige);background:var(--warm-white);font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text);outline:none;transition:border-color 0.2s\}\
+.input:focus\{border-color:var(--olive)\}\
+textarea.input\{resize:vertical;min-height:100px\}\
+.label\{font-size:13px;font-weight:600;color:var(--text-light);margin-bottom:6px;display:block;text-transform:uppercase;letter-spacing:0.05em\}\
+/* TAGS */\
+.tag\{display:inline-flex;align-items:center;padding:4px 12px;border-radius:var(--radius-full);font-size:12px;font-weight:500\}\
+.tag-olive\{background:#e8f0e4;color:var(--olive-dark)\}\
+.tag-terra\{background:#f5e6db;color:var(--terra)\}\
+.tag-swap\{background:#e4edf5;color:#3a6b95\}\
+/* MODAL */\
+.modal-overlay\{position:fixed;inset:0;background:rgba(44,40,32,0.6);z-index:200;display:flex;align-items:flex-end;justify-content:center;animation:fadeIn 0.2s\}\
+.modal\{background:var(--warm-white);border-radius:24px 24px 0 0;width:100%;max-width:640px;max-height:90vh;overflow-y:auto;padding:28px 24px;animation:fadeUp 0.3s\}\
+.modal-handle\{width:40px;height:4px;background:var(--beige);border-radius:var(--radius-full);margin:0 auto 20px\}\
+/* BADGE */\
+.badge\{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:var(--radius-full);font-size:12px;font-weight:600\}\
+.badge-green\{background:#e8f0e4;color:var(--olive-dark)\}\
+/* HERO */\
+.hero\{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--cream)\}\
+.hero-bg\{position:absolute;inset:0;pointer-events:none\}\
+.hero-blob\{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.5\}\
+.hero-content\{position:relative;z-index:1;padding:80px 24px 40px;max-width:500px\}\
+.hero-eyebrow\{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--olive);background:#e8f0e4;padding:6px 14px;border-radius:var(--radius-full);margin-bottom:24px\}\
+.hero-title\{font-family:'Fraunces',serif;font-size:clamp(42px,8vw,72px);line-height:1.05;font-weight:700;margin-bottom:20px\}\
+.hero-title em\{font-style:italic;color:var(--terra)\}\
+.hero-sub\{font-size:17px;line-height:1.7;color:var(--text-light);margin-bottom:36px;max-width:420px\}\
+.hero-actions\{display:flex;gap:12px;flex-wrap:wrap\}\
+.hero-stats\{display:flex;gap:32px;margin-top:48px\}\
+.hero-stat-num\{font-family:'Fraunces',serif;font-size:28px;font-weight:700;color:var(--olive-dark)\}\
+.hero-stat-label\{font-size:13px;color:var(--text-light)\}\
+.hero-img-col\{flex:1;position:relative;display:flex;justify-content:flex-end;padding:80px 40px 40px\}\
+.hero-img-stack\{position:relative;width:280px;height:380px\}\
+.hero-img-card\{position:absolute;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(44,40,32,0.2)\}\
+.hero-img-card img\{width:100%;height:100%;object-fit:cover\}\
+/* MAP */\
+.map-container\{position:relative;background:#e8e4dc;border-radius:var(--radius);overflow:hidden\}\
+.map-svg\{width:100%;height:100%\}\
+.map-pin\{cursor:pointer;transition:transform 0.2s;transform-origin:center bottom\}\
+/* PROFILE */\
+.profile-header\{background:linear-gradient(135deg,var(--olive-dark),var(--olive));padding:48px 24px 80px;position:relative;overflow:hidden\}\
+.profile-header::after\{content:'';position:absolute;bottom:-40px;left:0;right:0;height:80px;background:var(--cream);border-radius:50% 50% 0 0\}\
+.profile-avatar-wrap\{position:relative;display:inline-block\}\
+.profile-avatar\{width:90px;height:90px;border-radius:50%;border:4px solid white;object-fit:cover\}\
+.profile-level-badge\{position:absolute;bottom:0;right:0;width:28px;height:28px;border-radius:50%;background:var(--terra);border:2px solid white;display:flex;align-items:center;justify-content:center;font-size:14px\}\
+.profile-name\{font-family:'Fraunces',serif;font-size:24px;font-weight:700;color:white;margin-top:12px\}\
+.profile-location\{font-size:14px;color:rgba(255,255,255,0.8);margin-top:4px\}\
+.stats-row\{display:grid;grid-template-columns:repeat(4,1fr);gap:16px\}\
+.stat-box\{background:var(--warm-white);border-radius:var(--radius-sm);padding:16px;text-align:center\}\
+.stat-box-num\{font-family:'Fraunces',serif;font-size:24px;font-weight:700;color:var(--olive-dark)\}\
+.stat-box-label\{font-size:12px;color:var(--text-light);margin-top:2px\}\
+/* PROGRESS */\
+.progress-bar\{height:8px;background:var(--beige);border-radius:var(--radius-full);overflow:hidden\}\
+.progress-fill\{height:100%;background:linear-gradient(90deg,var(--olive-light),var(--olive));border-radius:var(--radius-full);transition:width 0.8s ease\}\
+/* IMPACT */\
+.impact-card\{background:linear-gradient(135deg,#2d4a35,#4a5c40);color:white;border-radius:var(--radius);padding:28px\}\
+.impact-num\{font-family:'Fraunces',serif;font-size:36px;font-weight:700\}\
+.impact-grid\{display:grid;grid-template-columns:repeat(3,1fr);gap:20px\}\
+/* PHOTO UPLOAD */\
+.photo-upload-grid\{display:grid;grid-template-columns:repeat(3,1fr);gap:12px\}\
+.photo-slot\{aspect-ratio:1;border-radius:var(--radius-sm);overflow:hidden;border:2px dashed var(--sand);display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--cream);transition:border-color 0.2s;position:relative\}\
+.photo-slot:hover\{border-color:var(--olive)\}\
+.photo-slot img\{width:100%;height:100%;object-fit:cover\}\
+/* CHAT */\
+.chat-messages\{max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;padding:16px 0\}\
+.chat-msg\{max-width:75%;padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.5\}\
+.chat-msg.sent\{background:var(--charcoal);color:white;align-self:flex-end;border-radius:16px 16px 4px 16px\}\
+.chat-msg.recv\{background:var(--beige);color:var(--text);align-self:flex-start;border-radius:16px 16px 16px 4px\}\
+.chat-time\{font-size:11px;opacity:0.6;margin-top:4px\}\
+/* SWAP */\
+.swap-item-select\{display:grid;grid-template-columns:repeat(2,1fr);gap:12px\}\
+.swap-item-opt\{border:2px solid var(--beige);border-radius:var(--radius-sm);padding:12px;cursor:pointer;transition:all 0.2s\}\
+.swap-item-opt:hover,.swap-item-opt.selected\{border-color:var(--olive);background:#e8f0e4\}\
+/* TOAST */\
+.toast\{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--charcoal);color:white;padding:12px 24px;border-radius:var(--radius-full);font-size:14px;font-weight:500;z-index:500;animation:fadeUp 0.3s;box-shadow:var(--shadow-hover);display:flex;align-items:center;gap:8px;white-space:nowrap\}\
+/* PAGES */\
+.page\{padding-top:64px;min-height:100vh\}\
+.container\{max-width:1200px;margin:0 auto;padding:0 24px\}\
+.section\{padding:48px 0\}\
+/* AUTH */\
+.auth-wrap\{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:var(--cream)\}\
+.auth-card\{background:var(--warm-white);border-radius:24px;padding:40px 36px;width:100%;max-width:420px;box-shadow:var(--shadow)\}\
+.auth-logo\{font-family:'Fraunces',serif;font-size:28px;font-weight:700;color:var(--olive-dark);text-align:center;margin-bottom:8px\}\
+.auth-sub\{font-size:15px;color:var(--text-light);text-align:center;margin-bottom:32px\}\
+.social-btn\{width:100%;padding:13px;border-radius:var(--radius-sm);border:1.5px solid var(--beige);background:white;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;color:var(--text);transition:all 0.2s;margin-bottom:12px\}\
+.social-btn:hover\{border-color:var(--sand);background:var(--cream)\}\
+.or-divider\{display:flex;align-items:center;gap:12px;color:var(--text-light);font-size:13px;margin:20px 0\}\
+.or-divider::before,.or-divider::after\{content:'';flex:1;height:1px;background:var(--beige)\}\
+/* SELECT */\
+.select\{width:100%;padding:14px 18px;border-radius:var(--radius-sm);border:1.5px solid var(--beige);background:var(--warm-white);font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text);outline:none;cursor:pointer;transition:border-color 0.2s;appearance:none\}\
+.select:focus\{border-color:var(--olive)\}\
+/* STARS */\
+.stars\{display:flex;gap:4px\}\
+.star\{color:#e8c84a;font-size:16px\}\
+.star.empty\{color:var(--beige)\}\
+/* NOTIF */\
+.notif-dot\{width:8px;height:8px;background:var(--terra);border-radius:50%;position:absolute;top:2px;right:2px;border:2px solid var(--cream)\}\
+/* ONBOARD */\
+.onboard-step\{text-align:center;padding:40px 24px;animation:fadeUp 0.4s\}\
+.onboard-icon\{font-size:64px;margin-bottom:20px;animation:float 3s ease-in-out infinite\}\
+.onboard-title\{font-family:'Fraunces',serif;font-size:28px;font-weight:700;margin-bottom:12px\}\
+.onboard-sub\{font-size:16px;color:var(--text-light);line-height:1.7;margin-bottom:32px\}\
+.onboard-dots\{display:flex;justify-content:center;gap:8px;margin-bottom:24px\}\
+.onboard-dot\{width:8px;height:8px;border-radius:50%;background:var(--beige);transition:all 0.3s\}\
+.onboard-dot.active\{background:var(--olive);width:24px;border-radius:4px\}\
+/* ITEM DETAIL */\
+.item-photos\{position:relative;aspect-ratio:3/4;max-height:60vh;overflow:hidden;border-radius:var(--radius) var(--radius) 0 0\}\
+.item-photos img\{width:100%;height:100%;object-fit:cover\}\
+.photo-dots\{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px\}\
+.photo-dot\{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.6)\}\
+.photo-dot.active\{background:white;width:18px;border-radius:3px\}\
+/* ACHIEVEMENTS */\
+.achievement-grid\{display:grid;grid-template-columns:repeat(3,1fr);gap:16px\}\
+.achievement\{text-align:center;padding:16px 12px;background:var(--cream);border-radius:var(--radius-sm)\}\
+.achievement-icon\{font-size:32px;margin-bottom:8px\}\
+.achievement-name\{font-size:12px;font-weight:600;color:var(--text)\}\
+.achievement-sub\{font-size:11px;color:var(--text-light);margin-top:2px\}\
+.achievement.locked\{opacity:0.4;filter:grayscale(1)\}\
+/* SECTION */\
+.section-title\{font-family:'Fraunces',serif;font-size:28px;font-weight:700;margin-bottom:8px\}\
+.section-subtitle\{font-size:15px;color:var(--text-light);margin-bottom:28px\}\
+/* UTILS */\
+.flex\{display:flex\}.items-center\{align-items:center\}.justify-between\{justify-content:space-between\}\
+.gap-8\{gap:8px\}.gap-12\{gap:12px\}.gap-16\{gap:16px\}\
+.mt-8\{margin-top:8px\}.mt-16\{margin-top:16px\}.mt-24\{margin-top:24px\}\
+.mb-8\{margin-bottom:8px\}.mb-16\{margin-bottom:16px\}.mb-24\{margin-bottom:24px\}\
+.w-full\{width:100%\}.text-center\{text-align:center\}\
+.text-sm\{font-size:13px\}.text-muted\{color:var(--text-light)\}.font-bold\{font-weight:700\}.relative\{position:relative\}\
+/* SCROLLBAR */\
+::-webkit-scrollbar\{width:6px\}\
+::-webkit-scrollbar-track\{background:var(--beige)\}\
+::-webkit-scrollbar-thumb\{background:var(--sand);border-radius:3px\}\
+/* RESPONSIVE */\
+@media(min-width:768px)\{\
+  .hero\{flex-direction:row\}\
+  .hero-content\{padding:100px 40px 60px 60px;max-width:55%\}\
+  .modal\{border-radius:var(--radius);margin:24px auto\}\
+  .modal-handle\{display:none\}\
+\}\
+@media(max-width:767px)\{\
+  .hero-img-col\{display:none\}\
+  .items-grid\{grid-template-columns:repeat(2,1fr);gap:14px\}\
+  .stats-row\{grid-template-columns:repeat(2,1fr)\}\
+  .nav-tab\{display:none\}\
+  .bottom-nav\{display:block\}\
+  .page\{padding-bottom:72px\}\
+  .impact-grid\{grid-template-columns:1fr\}\
+  .hero-stats\{gap:24px\}\
+\}\
+</style>\
+</head>\
+<body>\
+<div id="root"></div>\
+<script type="text/babel">\
+const \{ useState, useEffect, useRef \} = React;\
+\
+// \uc0\u9472 \u9472  MOCK DATA \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+const MOCK_USERS = [\
+  \{ id:"u1", name:"Valentina Cruz",   avatar:"https://i.pravatar.cc/150?img=47", location:"CDMX, Condesa",    lat:19.4119, lng:-99.1733, rating:4.8, points:1240, level:"Eco Warrior",   exchanges:12, sales:5  \},\
+  \{ id:"u2", name:"Mateo Solis",      avatar:"https://i.pravatar.cc/150?img=12", location:"CDMX, Roma Norte", lat:19.4193, lng:-99.1643, rating:4.6, points:870,  level:"Green Scout",   exchanges:7,  sales:3  \},\
+  \{ id:"u3", name:"Isabela Mora",     avatar:"https://i.pravatar.cc/150?img=32", location:"CDMX, Polanco",    lat:19.4319, lng:-99.1955, rating:4.9, points:2100, level:"Circular Star", exchanges:20, sales:11 \},\
+];\
+\
+const MOCK_ITEMS = [\
+  \{ id:"i1", userId:"u1", title:"Trench coat beige vintage",  category:"Abrigos",   size:"M",  brand:"Zara",          condition:"Muy bueno",  description:"Cl\'e1sico trench de los 90s, perfecto para el oto\'f1o. Sin manchas ni roturas.", price:350, swapOnly:false, photos:["https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400","https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=400"], lat:19.4119, lng:-99.1733, tags:["vintage"], likes:23, createdAt:"2024-01-15" \},\
+  \{ id:"i2", userId:"u2", title:"Jeans wide leg 90s",         category:"Pantalones",size:"28", brand:"Levi's",         condition:"Bueno",      description:"Aut\'e9nticos 501 vintage, la pieza perfecta para cualquier outfit.",            price:null,swapOnly:true,  photos:["https://images.unsplash.com/photo-1542272604-787c3835535d?w=400"],                                                                            lat:19.4193, lng:-99.1643, tags:["denim"],   likes:41, createdAt:"2024-01-20" \},\
+  \{ id:"i3", userId:"u3", title:"Blazer oversize cuadros",    category:"Blazers",   size:"L",  brand:"H&M",            condition:"Como nuevo", description:"Blazer a cuadros en tonos neutros, usado solo una vez para una boda.",        price:280, swapOnly:false, photos:["https://images.unsplash.com/photo-1594938298603-c8148c4f6f28?w=400","https://images.unsplash.com/photo-1555069519-127aadecd574?w=400"], lat:19.4319, lng:-99.1955, tags:["blazer"],  likes:35, createdAt:"2024-01-18" \},\
+  \{ id:"i4", userId:"u1", title:"Vestido floral maxi",        category:"Vestidos",  size:"S",  brand:"Vintage",        condition:"Bueno",      description:"Vestido largo floral de los 70s, muy boho y relajado.",                      price:200, swapOnly:false, photos:["https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400"],                                                                            lat:19.4119, lng:-99.1733, tags:["floral"],  likes:18, createdAt:"2024-01-22" \},\
+  \{ id:"i5", userId:"u3", title:"Sweater chunky knit verde",  category:"Su\'e9teres",  size:"M",  brand:"Pull&Bear",      condition:"Muy bueno",  description:"Su\'e9ter oversized de punto grueso, super abrigador y estiloso.",              price:180, swapOnly:false, photos:["https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400"],                                                                            lat:19.4319, lng:-99.1955, tags:["knit"],    likes:52, createdAt:"2024-01-25" \},\
+  \{ id:"i6", userId:"u2", title:"Camisa de lino blanca",      category:"Camisas",   size:"L",  brand:"Massimo Dutti",  condition:"Como nuevo", description:"Camisa de lino 100%, perfecta para verano o viaje.",                        price:null,swapOnly:true,  photos:["https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400"],                                                                            lat:19.4193, lng:-99.1643, tags:["linen"],   likes:29, createdAt:"2024-01-28" \},\
+];\
+\
+const CATEGORIES = ["Todos","Abrigos","Blazers","Vestidos","Pantalones","Su\'e9teres","Camisas","Zapatos","Accesorios"];\
+const LEVELS = \{ "Eco Starter":\{min:0,icon:"\uc0\u55356 \u57137 "\}, "Green Scout":\{min:500,icon:"\u55356 \u57151 "\}, "Eco Warrior":\{min:1000,icon:"\u9851 \u65039 "\}, "Circular Star":\{min:2000,icon:"\u11088 "\} \};\
+\
+function getLevel(p)\{\
+  if(p>=2000)return"Circular Star";\
+  if(p>=1000)return"Eco Warrior";\
+  if(p>=500) return"Green Scout";\
+  return"Eco Starter";\
+\}\
+function calcImpact(ex,sal)\{\
+  return\{water:ex*2700+sal*500, co2:(ex*4+sal*1.5).toFixed(1), items:ex+sal\};\
+\}\
+function distanceKm(lat1,lng1,lat2,lng2)\{\
+  const R=6371,dLat=(lat2-lat1)*Math.PI/180,dLng=(lng2-lng1)*Math.PI/180;\
+  const a=Math.sin(dLat/2)**2+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;\
+  return(R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a))).toFixed(1);\
+\}\
+\
+// \uc0\u9472 \u9472  SVG ICONS \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+const Ic = \{\
+  Home:()=><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,\
+  Map:()=><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>,\
+  Plus:()=><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>,\
+  User:()=><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,\
+  Heart:()=><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>,\
+  HeartFilled:()=><svg viewBox="0 0 24 24" fill="#c4865c"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>,\
+  Search:()=><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>,\
+  Send:()=><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>,\
+  Leaf:()=><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 22c1.25-1.25 2.5-2.5 3.5-4 .83-1.25 1.3-2.5 1.5-4 .2-1.5 0-3-.5-4.5-.5-1.5-1-3-1-4.5C5.5 3 7 2 9 2c2 0 4 1 6 3 2 2 3 4 3 6 0 2-.5 4-1.5 5.5S14 19 12 20.5c-2 1.5-4 2-6 1.5-.3-.1-.6-.2-.8-.3"/></svg>,\
+  X:()=><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>,\
+  MessageCircle:()=><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>,\
+\};\
+\
+// \uc0\u9472 \u9472  STARS \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+function Stars(\{rating,size=14\})\{\
+  return <div className="stars" style=\{\{fontSize:size\}\}>\{[1,2,3,4,5].map(i=><span key=\{i\} className=\{`star$\{i<=Math.round(rating)?'':' empty'\}`\}>\uc0\u9733 </span>)\}</div>;\
+\}\
+\
+// \uc0\u9472 \u9472  TOAST \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+function Toast(\{msg,onClose\})\{\
+  useEffect(()=>\{const t=setTimeout(onClose,3000);return()=>clearTimeout(t);\},[]);\
+  return <div className="toast"><span style=\{\{fontSize:16\}\}>\uc0\u10003 </span> \{msg\}</div>;\
+\}\
+\
+// \uc0\u9472 \u9472  ITEM CARD \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+function ItemCard(\{item,currentUser,onClick,liked,onLike\})\{\
+  const itemUser=MOCK_USERS.find(u=>u.id===item.userId);\
+  const dist=currentUser?distanceKm(currentUser.lat,currentUser.lng,item.lat,item.lng):null;\
+  return(\
+    <div className="card item-card animate-fadeup" onClick=\{()=>onClick(item)\}>\
+      <div style=\{\{position:'relative',overflow:'hidden'\}\}>\
+        <img src=\{item.photos[0]\} alt=\{item.title\} className="item-card-img" loading="lazy"/>\
+        \{item.swapOnly&&<span className="item-card-badge">Solo Swap</span>\}\
+        <button className="item-card-like" onClick=\{e=>\{e.stopPropagation();onLike(item.id);\}\}>\
+          \{liked?<Ic.HeartFilled/>:<Ic.Heart/>\}\
+        </button>\
+      </div>\
+      <div className="item-card-body">\
+        <div className="item-card-title">\{item.title\}</div>\
+        <div style=\{\{fontSize:12,color:'var(--text-light)',marginBottom:6\}\}>\{item.brand\} \'b7 \{item.size\}</div>\
+        <div className="item-card-meta">\
+          <span className="item-card-price">\
+            \{item.swapOnly?<span className="tag tag-swap">\uc0\u55357 \u56580  Intercambio</span>:`$$\{item.price\} MXN`\}\
+          </span>\
+          \{dist&&<span style=\{\{fontSize:11,color:'var(--text-light)'\}\}>\uc0\u55357 \u56525  \{dist\} km</span>\}\
+        </div>\
+        \{itemUser&&<div className="flex items-center gap-8 mt-8" style=\{\{borderTop:'1px solid var(--beige)',paddingTop:8\}\}>\
+          <img src=\{itemUser.avatar\} alt="" style=\{\{width:20,height:20,borderRadius:'50%',objectFit:'cover'\}\}/>\
+          <span style=\{\{fontSize:12,color:'var(--text-light)'\}\}>\{itemUser.name\}</span>\
+        </div>\}\
+      </div>\
+    </div>\
+  );\
+\}\
+\
+// \uc0\u9472 \u9472  AUTH PAGE \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+function AuthPage(\{onLogin\})\{\
+  const [mode,setMode]=useState("login");\
+  const [step,setStep]=useState("welcome");\
+  const [onboardIdx,setOnboardIdx]=useState(0);\
+  const [form,setForm]=useState(\{name:"",email:"",password:""\});\
+\
+  const onboards=[\
+    \{icon:"\uc0\u55357 \u56407 ",title:"Dale nueva vida a tu ropa",sub:"Sube tus prendas olvidadas y encuentra su pr\'f3ximo due\'f1o. Cada intercambio es una historia nueva."\},\
+    \{icon:"\uc0\u55357 \u56826 \u65039 ",title:"Descubre cerca de ti",sub:"Ve qu\'e9 prendas est\'e1n disponibles en tu barrio con nuestro mapa interactivo. \'a1La moda circular empieza en tu colonia!"\},\
+    \{icon:"\uc0\u55356 \u57137 ",title:"Mide tu impacto",sub:"Cada intercambio ahorra miles de litros de agua y reduce tu huella de CO\u8322 . Haz moda, no basura."\},\
+  ];\
+\
+  if(step==="welcome")\{\
+    const ob=onboards[onboardIdx];\
+    return(\
+      <div className="auth-wrap" style=\{\{flexDirection:'column'\}\}>\
+        <div style=\{\{width:'100%',maxWidth:420\}\}>\
+          <div style=\{\{textAlign:'center',marginBottom:8\}\}>\
+            <div className="auth-logo">re<span style=\{\{color:'var(--terra)'\}\}>wear</span></div>\
+          </div>\
+          <div className="onboard-step">\
+            <div className="onboard-icon">\{ob.icon\}</div>\
+            <div className="onboard-title serif">\{ob.title\}</div>\
+            <div className="onboard-sub">\{ob.sub\}</div>\
+            <div className="onboard-dots">\
+              \{onboards.map((_,i)=><div key=\{i\} className=\{`onboard-dot$\{i===onboardIdx?' active':''\}`\}/>)\}\
+            </div>\
+            \{onboardIdx<onboards.length-1\
+              ?<button className="btn btn-primary btn-lg w-full" onClick=\{()=>setOnboardIdx(i=>i+1)\}>Continuar</button>\
+              :<button className="btn btn-primary btn-lg w-full" onClick=\{()=>setStep("form")\}>Empezar ahora \uc0\u10024 </button>\}\
+            \{onboardIdx<onboards.length-1&&\
+              <button className="btn btn-ghost" style=\{\{marginTop:12,width:'100%'\}\} onClick=\{()=>setStep("form")\}>Saltar</button>\}\
+          </div>\
+        </div>\
+      </div>\
+    );\
+  \}\
+\
+  const handleSubmit=()=>onLogin(\{...MOCK_USERS[0],name:form.name||"Valentina Cruz",email:form.email\});\
+\
+  return(\
+    <div className="auth-wrap">\
+      <div className="auth-card animate-fadeup">\
+        <div className="auth-logo">re<span style=\{\{fontStyle:'italic',color:'var(--terra)'\}\}>wear</span></div>\
+        <div className="auth-sub">\{mode==="login"?"Bienvenida de vuelta \uc0\u55356 \u57151 ":"\'danete al movimiento circular \u55356 \u57137 "\}</div>\
+\
+        <button className="social-btn" onClick=\{()=>onLogin(MOCK_USERS[0])\}>\
+          <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>\
+          Continuar con Google\
+        </button>\
+        <button className="social-btn" onClick=\{()=>onLogin(MOCK_USERS[0])\}>\
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>\
+          Continuar con Apple\
+        </button>\
+\
+        <div className="or-divider">o</div>\
+\
+        \{mode==="register"&&<div style=\{\{marginBottom:16\}\}>\
+          <label className="label">Nombre</label>\
+          <input className="input" placeholder="Tu nombre" value=\{form.name\} onChange=\{e=>setForm(\{...form,name:e.target.value\})\}/>\
+        </div>\}\
+        <div style=\{\{marginBottom:16\}\}>\
+          <label className="label">Email</label>\
+          <input className="input" type="email" placeholder="hola@rewear.mx" value=\{form.email\} onChange=\{e=>setForm(\{...form,email:e.target.value\})\}/>\
+        </div>\
+        <div style=\{\{marginBottom:24\}\}>\
+          <label className="label">Contrase\'f1a</label>\
+          <input className="input" type="password" placeholder="\'95\'95\'95\'95\'95\'95\'95\'95" value=\{form.password\} onChange=\{e=>setForm(\{...form,password:e.target.value\})\}/>\
+        </div>\
+\
+        <button className="btn btn-primary w-full btn-lg" onClick=\{handleSubmit\}>\
+          \{mode==="login"?"Iniciar sesi\'f3n":"Crear cuenta"\}\
+        </button>\
+\
+        <div style=\{\{textAlign:'center',marginTop:20,fontSize:14,color:'var(--text-light)'\}\}>\
+          \{mode==="login"?"\'bfNo tienes cuenta? ":"\'bfYa tienes cuenta? "\}\
+          <span style=\{\{color:'var(--olive-dark)',fontWeight:600,cursor:'pointer'\}\} onClick=\{()=>setMode(mode==="login"?"register":"login")\}>\
+            \{mode==="login"?"Reg\'edstrate":"Inicia sesi\'f3n"\}\
+          </span>\
+        </div>\
+      </div>\
+    </div>\
+  );\
+\}\
+\
+// \uc0\u9472 \u9472  HOME PAGE \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+function HomePage(\{currentUser,items,likedItems,onLike,onItemClick\})\{\
+  const [search,setSearch]=useState("");\
+  const [activeCategory,setActiveCategory]=useState("Todos");\
+  const [filterSwap,setFilterSwap]=useState(false);\
+\
+  const filtered=items.filter(item=>\{\
+    if(search&&!item.title.toLowerCase().includes(search.toLowerCase())&&!item.brand.toLowerCase().includes(search.toLowerCase()))return false;\
+    if(activeCategory!=="Todos"&&item.category!==activeCategory)return false;\
+    if(filterSwap&&!item.swapOnly)return false;\
+    return true;\
+  \});\
+\
+  return(\
+    <div className="page">\
+      \{/* HERO */\}\
+      <div className="hero">\
+        <div className="hero-bg">\
+          <div className="hero-blob" style=\{\{width:400,height:400,background:'#c8d8c0',top:-100,right:-50\}\}/>\
+          <div className="hero-blob" style=\{\{width:300,height:300,background:'#e8d8c8',bottom:50,left:-100\}\}/>\
+        </div>\
+        <div className="hero-content animate-fadeup">\
+          <div className="hero-eyebrow"><Ic.Leaf/> Moda circular \'b7 CDMX</div>\
+          <h1 className="hero-title">Tu ropa<br/>merece una<br/><em>segunda vida</em></h1>\
+          <p className="hero-sub">Intercambia, compra y vende ropa de segunda mano. Conecta con personas cercanas y reduce tu huella de carbono.</p>\
+          <div className="hero-actions">\
+            <button className="btn btn-primary btn-lg">Explorar ahora</button>\
+            <button className="btn btn-outline btn-lg">Subir prenda +</button>\
+          </div>\
+          <div className="hero-stats">\
+            <div><div className="hero-stat-num serif">2.4k</div><div className="hero-stat-label">prendas activas</div></div>\
+            <div><div className="hero-stat-num serif">847</div><div className="hero-stat-label">usuarios locales</div></div>\
+            <div><div className="hero-stat-num serif">1.2M</div><div className="hero-stat-label">litros ahorrados</div></div>\
+          </div>\
+        </div>\
+        <div className="hero-img-col">\
+          <div className="hero-img-stack">\
+            <div className="hero-img-card" style=\{\{width:180,height:240,top:0,left:60\}\}><img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400" alt=""/></div>\
+            <div className="hero-img-card" style=\{\{width:160,height:210,bottom:0,left:0,zIndex:2\}\}><img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=400" alt=""/></div>\
+            <div className="hero-img-card" style=\{\{width:140,height:190,bottom:20,right:0,zIndex:3\}\}><img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400" alt=""/></div>\
+          </div>\
+        </div>\
+      </div>\
+\
+      \{/* EXPLORE */\}\
+      <div className="container section">\
+        <div className="section-title serif">Explorar prendas</div>\
+        <div className="section-subtitle">Encuentra ropa \'fanica cerca de ti</div>\
+\
+        <div className="search-wrap mb-16">\
+          <span className="search-icon"><Ic.Search/></span>\
+          <input className="search-input" placeholder="Buscar por nombre, marca, categor\'eda..." value=\{search\} onChange=\{e=>setSearch(e.target.value)\}/>\
+        </div>\
+\
+        <div className="filters-bar">\
+          \{CATEGORIES.map(cat=><button key=\{cat\} className=\{`filter-chip$\{activeCategory===cat?' active':''\}`\} onClick=\{()=>setActiveCategory(cat)\}>\{cat\}</button>)\}\
+          <button className=\{`filter-chip$\{filterSwap?' active':''\}`\} onClick=\{()=>setFilterSwap(v=>!v)\}>\uc0\u55357 \u56580  Solo Swap</button>\
+        </div>\
+\
+        \{filtered.length>0\
+          ?<div className="items-grid">\{filtered.map(item=><ItemCard key=\{item.id\} item=\{item\} currentUser=\{currentUser\} onClick=\{onItemClick\} liked=\{likedItems.includes(item.id)\} onLike=\{onLike\}/>)\}</div>\
+          :<div className="text-center" style=\{\{padding:'60px 0',color:'var(--text-light)'\}\}>\
+            <div style=\{\{fontSize:48,marginBottom:12\}\}>\uc0\u55357 \u56589 </div>\
+            <div style=\{\{fontSize:16,fontWeight:500\}\}>No encontramos prendas con esos filtros</div>\
+          </div>\}\
+      </div>\
+    </div>\
+  );\
+\}\
+\
+// \uc0\u9472 \u9472  MAP PAGE \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+function MapPage(\{currentUser,items,onItemClick\})\{\
+  const [selected,setSelected]=useState(null);\
+  const [filter,setFilter]=useState("all");\
+  const [distFilter,setDistFilter]=useState(10);\
+  const [hovered,setHovered]=useState(null);\
+\
+  const userLat=currentUser?.lat||19.42;\
+  const userLng=currentUser?.lng||-99.17;\
+\
+  const filtered=items.filter(item=>\{\
+    const d=parseFloat(distanceKm(userLat,userLng,item.lat,item.lng));\
+    if(d>distFilter)return false;\
+    if(filter==="swap"&&!item.swapOnly)return false;\
+    if(filter==="buy"&&item.swapOnly)return false;\
+    return true;\
+  \});\
+\
+  const W=800,H=500;\
+  const lngRange=[-99.25,-99.10],latRange=[19.39,19.46];\
+  function toXY(lat,lng)\{\
+    return[((lng-lngRange[0])/(lngRange[1]-lngRange[0]))*W,\
+           (1-(lat-latRange[0])/(latRange[1]-latRange[0]))*H];\
+  \}\
+  const [ux,uy]=toXY(userLat,userLng);\
+\
+  const hoods=[\
+    \{name:"Condesa",   path:"M 250,260 L 300,240 L 340,255 L 350,290 L 310,310 L 260,295 Z",color:"#d4e4cc"\},\
+    \{name:"Roma Norte",path:"M 340,255 L 390,240 L 420,260 L 415,290 L 365,295 L 350,290 Z",color:"#ccd8e0"\},\
+    \{name:"Polanco",   path:"M 150,180 L 220,165 L 260,180 L 255,220 L 200,230 L 155,215 Z",color:"#e0d4c8"\},\
+    \{name:"Centro",    path:"M 380,310 L 440,295 L 460,325 L 450,360 L 390,365 L 370,345 Z",color:"#d4d0c8"\},\
+    \{name:"Coyoac\'e1n",  path:"M 290,370 L 340,355 L 370,375 L 365,410 L 310,420 L 280,400 Z",color:"#c8d4c0"\},\
+  ];\
+  const hoodLabels=\{Condesa:[295,275],"Roma Norte":[385,268],Polanco:[200,198],Centro:[415,330],"Coyoac\'e1n":[325,390]\};\
+  const streets=["M 100,230 L 720,230","M 100,320 L 720,320","M 280,80 L 280,480","M 420,80 L 420,480","M 100,160 L 500,400","M 400,80 L 700,380"];\
+\
+  return(\
+    <div className="page">\
+      <div className="container" style=\{\{paddingTop:24\}\}>\
+        <div className="flex items-center justify-between mb-16">\
+          <div>\
+            <div className="section-title serif" style=\{\{marginBottom:4\}\}>Mapa de prendas</div>\
+            <div className="text-sm text-muted">\uc0\u55357 \u56525  \{filtered.length\} prendas cerca de ti</div>\
+          </div>\
+        </div>\
+\
+        <div className="flex gap-12 mb-16" style=\{\{flexWrap:'wrap',alignItems:'center'\}\}>\
+          <div className="filters-bar" style=\{\{padding:0\}\}>\
+            \{[["all","Todos"],["swap","Solo Swap"],["buy","Solo Venta"]].map(([v,l])=>\
+              <button key=\{v\} className=\{`filter-chip$\{filter===v?' active':''\}`\} onClick=\{()=>setFilter(v)\}>\{l\}</button>)\}\
+          </div>\
+          <div className="flex items-center gap-8">\
+            <span className="text-sm text-muted">Radio:</span>\
+            <input type="range" min=\{1\} max=\{20\} value=\{distFilter\} onChange=\{e=>setDistFilter(+e.target.value)\} style=\{\{accentColor:'var(--olive)'\}\}/>\
+            <span className="text-sm font-bold">\{distFilter\} km</span>\
+          </div>\
+        </div>\
+\
+        \{/* MAP SVG */\}\
+        <div className="map-container" style=\{\{height:480\}\}>\
+          <svg viewBox=\{`0 0 $\{W\} $\{H\}`\} className="map-svg" style=\{\{background:'#e8e4dc'\}\}>\
+            \{[0.2,0.4,0.6,0.8].map(r=><line key=\{'h'+r\} x1=\{0\} y1=\{H*r\} x2=\{W\} y2=\{H*r\} stroke="#d4cfc4" strokeWidth="1" opacity="0.5"/>)\}\
+            \{[0.2,0.4,0.6,0.8].map(r=><line key=\{'v'+r\} x1=\{W*r\} y1=\{0\} x2=\{W*r\} y2=\{H\} stroke="#d4cfc4" strokeWidth="1" opacity="0.5"/>)\}\
+            \{hoods.map(n=><path key=\{n.name\} d=\{n.path\} fill=\{n.color\} stroke="#c8c4b8" strokeWidth="1.5" opacity="0.8"/>)\}\
+            \{streets.map((d,i)=><path key=\{i\} d=\{d\} stroke="#b8b0a4" strokeWidth="1" fill="none" opacity="0.6"/>)\}\
+            <ellipse cx="200" cy="340" rx="40" ry="25" fill="#b8d4a8" opacity="0.7"/>\
+            <ellipse cx="550" cy="200" rx="30" ry="20" fill="#b8d4a8" opacity="0.7"/>\
+            \{/* User pin */\}\
+            <g transform=\{`translate($\{ux\},$\{uy\})`\}>\
+              <circle r="24" fill="rgba(74,92,64,0.15)"/>\
+              <circle r="12" fill="var(--olive-dark)"/>\
+              <circle r="4" fill="white"/>\
+              <text y="-18" textAnchor="middle" fontSize="10" fill="var(--olive-dark)" fontWeight="600">T\'fa</text>\
+            </g>\
+            <circle cx=\{ux\} cy=\{uy\} r=\{distFilter*25\} fill="none" stroke="var(--olive)" strokeWidth="1.5" strokeDasharray="6 4" opacity="0.5"/>\
+            \{/* Item pins */\}\
+            \{filtered.map(item=>\{\
+              const [px,py]=toXY(item.lat,item.lng);\
+              const dist=distanceKm(userLat,userLng,item.lat,item.lng);\
+              const isHov=hovered===item.id,isSel=selected?.id===item.id;\
+              const pinColor=item.swapOnly?"#3a6b95":"var(--terra)";\
+              return(\
+                <g key=\{item.id\} style=\{\{cursor:'pointer',transform:`translate($\{px\}px,$\{py\}px) scale($\{isSel||isHov?1.2:1\})`,transformOrigin:`$\{px\}px $\{py\}px`,transition:'transform 0.2s'\}\}\
+                  onClick=\{()=>setSelected(isSel?null:item)\}\
+                  onMouseEnter=\{()=>setHovered(item.id)\}\
+                  onMouseLeave=\{()=>setHovered(null)\}>\
+                  <circle cx=\{px\} cy=\{py\} r="20" fill="rgba(0,0,0,0.08)" transform="translate(2,2)"/>\
+                  <circle cx=\{px\} cy=\{py\} r="20" fill=\{isSel?"var(--charcoal)":"white"\} stroke=\{pinColor\} strokeWidth="2.5"/>\
+                  <image href=\{item.photos[0]\} x=\{px-14\} y=\{py-14\} width="28" height="28" style=\{\{clipPath:'circle(12px at 14px 14px)',borderRadius:'50%'\}\}/>\
+                  \{(isHov||isSel)&&<>\
+                    <rect x=\{px-50\} y=\{py-58\} width="100" height="36" rx="8" fill="var(--charcoal)"/>\
+                    <polygon points=\{`$\{px-6\},$\{py-22\} $\{px\},$\{py-14\} $\{px+6\},$\{py-22\}`\} fill="var(--charcoal)"/>\
+                    <text x=\{px\} y=\{py-44\} textAnchor="middle" fontSize="9" fill="white" fontWeight="600">\{item.title.slice(0,16)\}\{item.title.length>16?'\'85':''\}</text>\
+                    <text x=\{px\} y=\{py-32\} textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.8)">\{item.swapOnly?'\uc0\u55357 \u56580  Swap':`$$\{item.price\}`\} \'b7 \{dist\}km</text>\
+                  </>\}\
+                </g>\
+              );\
+            \})\}\
+            \{hoods.map(n=>\{const[lx,ly]=hoodLabels[n.name]||[0,0];return<text key=\{n.name\} x=\{lx\} y=\{ly\} textAnchor="middle" fontSize="10" fill="#6b5e50" fontWeight="600" opacity="0.8">\{n.name\}</text>;\})\}\
+          </svg>\
+\
+          \{/* Legend */\}\
+          <div style=\{\{position:'absolute',bottom:16,right:16,background:'rgba(247,244,238,0.95)',borderRadius:12,padding:'12px 16px',backdropFilter:'blur(8px)',boxShadow:'var(--shadow)'\}\}>\
+            <div style=\{\{fontSize:11,fontWeight:600,color:'var(--text-light)',marginBottom:8,textTransform:'uppercase',letterSpacing:'0.05em'\}\}>Leyenda</div>\
+            <div className="flex items-center gap-8 mb-8"><span style=\{\{width:12,height:12,borderRadius:'50%',background:'var(--terra)',display:'inline-block',border:'2px solid var(--terra)'\}\}></span><span style=\{\{fontSize:12\}\}>Venta</span></div>\
+            <div className="flex items-center gap-8 mb-8"><span style=\{\{width:12,height:12,borderRadius:'50%',background:'#3a6b95',display:'inline-block'\}\}></span><span style=\{\{fontSize:12\}\}>Swap</span></div>\
+            <div className="flex items-center gap-8"><span style=\{\{width:12,height:12,borderRadius:'50%',background:'var(--olive-dark)',display:'inline-block'\}\}></span><span style=\{\{fontSize:12\}\}>T\'fa</span></div>\
+          </div>\
+        </div>\
+\
+        \{/* SELECTED PREVIEW */\}\
+        \{selected&&<div className="card mt-16 animate-fadeup" style=\{\{padding:20\}\}>\
+          <div className="flex items-center gap-16">\
+            <img src=\{selected.photos[0]\} alt="" style=\{\{width:80,height:100,objectFit:'cover',borderRadius:12\}\}/>\
+            <div style=\{\{flex:1\}\}>\
+              <div style=\{\{fontWeight:700,fontSize:16,marginBottom:4\}\}>\{selected.title\}</div>\
+              <div style=\{\{fontSize:13,color:'var(--text-light)',marginBottom:8\}\}>\{selected.brand\} \'b7 Talla \{selected.size\} \'b7 \{selected.condition\}</div>\
+              <div className="flex items-center gap-8">\
+                \{selected.swapOnly?<span className="tag tag-swap">\uc0\u55357 \u56580  Solo Swap</span>:<span style=\{\{fontWeight:700,color:'var(--olive-dark)'\}\}>$ \{selected.price\} MXN</span>\}\
+                <span style=\{\{fontSize:12,color:'var(--text-light)'\}\}>\uc0\u55357 \u56525  \{distanceKm(userLat,userLng,selected.lat,selected.lng)\} km</span>\
+              </div>\
+            </div>\
+            <div className="flex" style=\{\{flexDirection:'column',gap:8\}\}>\
+              <button className="btn btn-primary btn-sm" onClick=\{()=>onItemClick(selected)\}>Ver m\'e1s</button>\
+              <button className="btn btn-ghost btn-sm" onClick=\{()=>setSelected(null)\}>Cerrar</button>\
+            </div>\
+          </div>\
+        </div>\}\
+\
+        \{/* NEARBY LIST */\}\
+        <div style=\{\{marginTop:32\}\}>\
+          <div className="flex items-center justify-between mb-16">\
+            <div className="section-title serif" style=\{\{fontSize:20\}\}>Cerca de ti</div>\
+            <span className="text-sm text-muted">\{filtered.length\} prendas</span>\
+          </div>\
+          <div style=\{\{display:'flex',flexDirection:'column',gap:12\}\}>\
+            \{[...filtered].sort((a,b)=>distanceKm(userLat,userLng,a.lat,a.lng)-distanceKm(userLat,userLng,b.lat,b.lng)).map(item=>\{\
+              const dist=distanceKm(userLat,userLng,item.lat,item.lng);\
+              return(\
+                <div key=\{item.id\} className="card" style=\{\{padding:16,cursor:'pointer'\}\} onClick=\{()=>onItemClick(item)\}>\
+                  <div className="flex items-center gap-16">\
+                    <img src=\{item.photos[0]\} alt="" style=\{\{width:64,height:80,objectFit:'cover',borderRadius:10\}\}/>\
+                    <div style=\{\{flex:1\}\}>\
+                      <div style=\{\{fontWeight:600,marginBottom:4\}\}>\{item.title\}</div>\
+                      <div style=\{\{fontSize:13,color:'var(--text-light)',marginBottom:6\}\}>\{item.brand\} \'b7 \{item.size\}</div>\
+                      \{item.swapOnly?<span className="tag tag-swap" style=\{\{fontSize:11\}\}>\uc0\u55357 \u56580  Swap</span>:<span style=\{\{fontWeight:700,fontSize:14,color:'var(--olive-dark)'\}\}>$ \{item.price\}</span>\}\
+                    </div>\
+                    <div className="text-center">\
+                      <div style=\{\{fontFamily:'Fraunces,serif',fontSize:20,fontWeight:700,color:'var(--olive-dark)'\}\}>\{dist\}</div>\
+                      <div style=\{\{fontSize:11,color:'var(--text-light)'\}\}>km</div>\
+                    </div>\
+                  </div>\
+                </div>\
+              );\
+            \})\}\
+          </div>\
+        </div>\
+      </div>\
+    </div>\
+  );\
+\}\
+\
+// \uc0\u9472 \u9472  UPLOAD PAGE \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+function UploadPage(\{currentUser,onUpload\})\{\
+  const [photos,setPhotos]=useState([]);\
+  const [form,setForm]=useState(\{title:'',category:'Abrigos',size:'M',brand:'',condition:'Bueno',description:'',price:'',swapOnly:false\});\
+  const [step,setStep]=useState(1);\
+\
+  const mockPhotos=["https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400","https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400","https://images.unsplash.com/photo-1594938298603-c8148c4f6f28?w=400"];\
+  const addPhoto=()=>\{if(photos.length<5)setPhotos([...photos,mockPhotos[photos.length%mockPhotos.length]]);\};\
+\
+  const handleSubmit=()=>\{\
+    onUpload(\{\
+      id:`i_$\{Date.now()\}`,userId:currentUser.id,...form,\
+      price:form.swapOnly?null:parseInt(form.price)||0,\
+      photos:photos.length>0?photos:[mockPhotos[0]],\
+      lat:currentUser.lat+(Math.random()-0.5)*0.01,\
+      lng:currentUser.lng+(Math.random()-0.5)*0.01,\
+      tags:[],likes:0,createdAt:new Date().toISOString().split('T')[0],\
+    \});\
+  \};\
+\
+  return(\
+    <div className="page">\
+      <div className="container" style=\{\{paddingTop:24,maxWidth:640\}\}>\
+        <div className="section-title serif mb-8">Subir prenda</div>\
+        <div className="section-subtitle">Comparte lo que ya no usas \uc0\u9851 \u65039 </div>\
+\
+        <div className="flex gap-8 mb-24">\
+          \{[1,2,3].map(s=><div key=\{s\} style=\{\{flex:1,height:4,borderRadius:2,background:step>=s?'var(--olive)':'var(--beige)',transition:'background 0.3s'\}\}/>)\}\
+        </div>\
+\
+        \{step===1&&<div className="animate-fadeup">\
+          <div className="label mb-8">Fotos (hasta 5)</div>\
+          <div className="photo-upload-grid mb-24">\
+            \{photos.map((p,i)=>(\
+              <div key=\{i\} className="photo-slot">\
+                <img src=\{p\} alt=""/>\
+                <button onClick=\{()=>setPhotos(photos.filter((_,idx)=>idx!==i))\}\
+                  style=\{\{position:'absolute',top:6,right:6,background:'rgba(0,0,0,0.6)',border:'none',color:'white',borderRadius:'50%',width:24,height:24,fontSize:12,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center'\}\}>\'d7</button>\
+              </div>\
+            ))\}\
+            \{photos.length<5&&<div className="photo-slot" onClick=\{addPhoto\}>\
+              <div style=\{\{textAlign:'center'\}\}><div style=\{\{fontSize:28,marginBottom:4\}\}>\uc0\u55357 \u56567 </div><div style=\{\{fontSize:11,color:'var(--text-light)'\}\}>Agregar foto</div></div>\
+            </div>\}\
+          </div>\
+          <div style=\{\{marginBottom:16\}\}>\
+            <label className="label">Nombre de la prenda *</label>\
+            <input className="input" placeholder="Ej. Trench coat beige vintage" value=\{form.title\} onChange=\{e=>setForm(\{...form,title:e.target.value\})\}/>\
+          </div>\
+          <div style=\{\{marginBottom:16\}\}>\
+            <label className="label">Descripci\'f3n</label>\
+            <textarea className="input" placeholder="Cu\'e9ntanos m\'e1s sobre la prenda..." value=\{form.description\} onChange=\{e=>setForm(\{...form,description:e.target.value\})\}/>\
+          </div>\
+          <button className="btn btn-primary w-full btn-lg" onClick=\{()=>setStep(2)\} disabled=\{!form.title\}>Siguiente \uc0\u8594 </button>\
+        </div>\}\
+\
+        \{step===2&&<div className="animate-fadeup">\
+          <div style=\{\{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16,marginBottom:16\}\}>\
+            <div>\
+              <label className="label">Categor\'eda</label>\
+              <select className="select" value=\{form.category\} onChange=\{e=>setForm(\{...form,category:e.target.value\})\}>\
+                \{CATEGORIES.slice(1).map(c=><option key=\{c\}>\{c\}</option>)\}\
+              </select>\
+            </div>\
+            <div>\
+              <label className="label">Talla</label>\
+              <select className="select" value=\{form.size\} onChange=\{e=>setForm(\{...form,size:e.target.value\})\}>\
+                \{["XS","S","M","L","XL","XXL","26","28","30","32","34","36"].map(s=><option key=\{s\}>\{s\}</option>)\}\
+              </select>\
+            </div>\
+          </div>\
+          <div style=\{\{marginBottom:16\}\}>\
+            <label className="label">Marca</label>\
+            <input className="input" placeholder="Zara, H&M, Vintage..." value=\{form.brand\} onChange=\{e=>setForm(\{...form,brand:e.target.value\})\}/>\
+          </div>\
+          <div style=\{\{marginBottom:16\}\}>\
+            <label className="label">Estado</label>\
+            <select className="select" value=\{form.condition\} onChange=\{e=>setForm(\{...form,condition:e.target.value\})\}>\
+              \{["Como nuevo","Muy bueno","Bueno","Regular"].map(c=><option key=\{c\}>\{c\}</option>)\}\
+            </select>\
+          </div>\
+          <div className="flex gap-8">\
+            <button className="btn btn-ghost" onClick=\{()=>setStep(1)\}>\uc0\u8592  Atr\'e1s</button>\
+            <button className="btn btn-primary" style=\{\{flex:1\}\} onClick=\{()=>setStep(3)\}>Siguiente \uc0\u8594 </button>\
+          </div>\
+        </div>\}\
+\
+        \{step===3&&<div className="animate-fadeup">\
+          <div style=\{\{marginBottom:20\}\}>\
+            <label className="label">\'bfC\'f3mo quieres compartirla?</label>\
+            <div style=\{\{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12,marginTop:8\}\}>\
+              <div className="card" style=\{\{padding:20,cursor:'pointer',border:`2px solid $\{!form.swapOnly?'var(--olive)':'var(--beige)'\}`,boxShadow:'none'\}\} onClick=\{()=>setForm(\{...form,swapOnly:false\})\}>\
+                <div style=\{\{fontSize:24,marginBottom:8\}\}>\uc0\u55357 \u56496 </div><div style=\{\{fontWeight:700,marginBottom:4\}\}>Venta</div><div style=\{\{fontSize:13,color:'var(--text-light)'\}\}>Ponle precio</div>\
+              </div>\
+              <div className="card" style=\{\{padding:20,cursor:'pointer',border:`2px solid $\{form.swapOnly?'var(--olive)':'var(--beige)'\}`,boxShadow:'none'\}\} onClick=\{()=>setForm(\{...form,swapOnly:true\})\}>\
+                <div style=\{\{fontSize:24,marginBottom:8\}\}>\uc0\u55357 \u56580 </div><div style=\{\{fontWeight:700,marginBottom:4\}\}>Solo Swap</div><div style=\{\{fontSize:13,color:'var(--text-light)'\}\}>Solo intercambio</div>\
+              </div>\
+            </div>\
+          </div>\
+          \{!form.swapOnly&&<div style=\{\{marginBottom:20\}\}>\
+            <label className="label">Precio (MXN)</label>\
+            <input className="input" type="number" placeholder="0" value=\{form.price\} onChange=\{e=>setForm(\{...form,price:e.target.value\})\}/>\
+          </div>\}\
+          <div className="card" style=\{\{padding:16,marginBottom:20,background:'var(--cream)',boxShadow:'none'\}\}>\
+            <div className="flex items-center gap-12">\
+              <span style=\{\{fontSize:24\}\}>\uc0\u55357 \u56525 </span>\
+              <div><div style=\{\{fontWeight:600\}\}>Ubicaci\'f3n autom\'e1tica</div><div style=\{\{fontSize:13,color:'var(--text-light)'\}\}>\{currentUser?.location||"CDMX, M\'e9xico"\}</div></div>\
+            </div>\
+          </div>\
+          <div className="impact-card mb-20">\
+            <div className="flex items-center gap-12 mb-16"><Ic.Leaf/><div style=\{\{fontFamily:'Fraunces,serif',fontSize:18,fontWeight:700\}\}>Tu impacto estimado</div></div>\
+            <div style=\{\{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:16\}\}>\
+              <div><div style=\{\{fontSize:22,fontWeight:700,fontFamily:'Fraunces,serif'\}\}>2,700L</div><div style=\{\{fontSize:12,opacity:0.8\}\}>agua ahorrada</div></div>\
+              <div><div style=\{\{fontSize:22,fontWeight:700,fontFamily:'Fraunces,serif'\}\}>4kg</div><div style=\{\{fontSize:12,opacity:0.8\}\}>CO\uc0\u8322  evitado</div></div>\
+              <div><div style=\{\{fontSize:22,fontWeight:700,fontFamily:'Fraunces,serif'\}\}>+50 pts</div><div style=\{\{fontSize:12,opacity:0.8\}\}>puntos ganados</div></div>\
+            </div>\
+          </div>\
+          <div className="flex gap-8">\
+            <button className="btn btn-ghost" onClick=\{()=>setStep(2)\}>\uc0\u8592  Atr\'e1s</button>\
+            <button className="btn btn-olive" style=\{\{flex:1\}\} onClick=\{handleSubmit\}>Publicar prenda \uc0\u55356 \u57151 </button>\
+          </div>\
+        </div>\}\
+      </div>\
+    </div>\
+  );\
+\}\
+\
+// \uc0\u9472 \u9472  PROFILE PAGE \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+function ProfilePage(\{currentUser,items\})\{\
+  const userItems=items.filter(i=>i.userId===currentUser.id);\
+  const impact=calcImpact(currentUser.exchanges,currentUser.sales);\
+  const level=getLevel(currentUser.points);\
+  const levelInfo=LEVELS[level];\
+  const levelKeys=Object.keys(LEVELS);\
+  const nextKey=levelKeys.find(k=>LEVELS[k].min>currentUser.points);\
+  const nextLevel=LEVELS[nextKey];\
+  const progressPct=nextLevel?Math.min(((currentUser.points-levelInfo.min)/(nextLevel.min-levelInfo.min))*100,100):100;\
+\
+  const achievements=[\
+    \{icon:"\uc0\u55356 \u57137 ",name:"Primera prenda",sub:"Sube tu primera pieza",unlocked:true\},\
+    \{icon:"\uc0\u55357 \u56580 ",name:"Primer swap",sub:"Completa un intercambio",unlocked:currentUser.exchanges>0\},\
+    \{icon:"\uc0\u11088 ",name:"5 estrellas",sub:"Recibe 5 valoraciones",unlocked:currentUser.rating>=4.8\},\
+    \{icon:"\uc0\u55356 \u57101 ",name:"Eco hero",sub:"Ahorra 10,000L de agua",unlocked:impact.water>=10000\},\
+    \{icon:"\uc0\u55356 \u57286 ",name:"Top vendedor",sub:"Completa 10 ventas",unlocked:currentUser.sales>=10\},\
+    \{icon:"\uc0\u55357 \u56462 ",name:"Circular Star",sub:"Alcanza 2000 puntos",unlocked:currentUser.points>=2000\},\
+  ];\
+\
+  return(\
+    <div className="page" style=\{\{paddingTop:0\}\}>\
+      <div className="profile-header">\
+        <div style=\{\{paddingTop:80,position:'relative',zIndex:1\}\}>\
+          <div className="profile-avatar-wrap">\
+            <img src=\{currentUser.avatar\} alt="" className="profile-avatar"/>\
+            <div className="profile-level-badge">\{levelInfo?.icon\}</div>\
+          </div>\
+          <div className="profile-name">\{currentUser.name\}</div>\
+          <div className="profile-location">\uc0\u55357 \u56525  \{currentUser.location\}</div>\
+          <div className="flex items-center gap-12" style=\{\{marginTop:12\}\}>\
+            <Stars rating=\{currentUser.rating\} size=\{16\}/>\
+            <span style=\{\{color:'rgba(255,255,255,0.9)',fontSize:15,fontWeight:600\}\}>\{currentUser.rating\}</span>\
+            <span className="badge" style=\{\{background:'rgba(255,255,255,0.2)',color:'white'\}\}>\{levelInfo?.icon\} \{level\}</span>\
+          </div>\
+        </div>\
+      </div>\
+\
+      <div className="container" style=\{\{marginTop:16\}\}>\
+        <div className="stats-row mb-24">\
+          <div className="stat-box"><div className="stat-box-num serif">\{currentUser.points\}</div><div className="stat-box-label">Puntos</div></div>\
+          <div className="stat-box"><div className="stat-box-num serif">\{currentUser.exchanges\}</div><div className="stat-box-label">Swaps</div></div>\
+          <div className="stat-box"><div className="stat-box-num serif">\{currentUser.sales\}</div><div className="stat-box-label">Ventas</div></div>\
+          <div className="stat-box"><div className="stat-box-num serif">\{userItems.length\}</div><div className="stat-box-label">Prendas</div></div>\
+        </div>\
+\
+        \{/* LEVEL PROGRESS */\}\
+        <div className="card" style=\{\{padding:20,marginBottom:24\}\}>\
+          <div className="flex items-center justify-between mb-12">\
+            <div>\
+              <div style=\{\{fontWeight:700,fontSize:16\}\}>\{levelInfo?.icon\} \{level\}</div>\
+              <div style=\{\{fontSize:13,color:'var(--text-light)'\}\}>\{currentUser.points\} / \{nextLevel?.min||"MAX"\} puntos</div>\
+            </div>\
+            \{nextKey&&<div style=\{\{textAlign:'right'\}\}><div style=\{\{fontSize:12,color:'var(--text-light)'\}\}>Siguiente</div><div style=\{\{fontWeight:600\}\}>\{nextKey\}</div></div>\}\
+          </div>\
+          <div className="progress-bar"><div className="progress-fill" style=\{\{width:`$\{progressPct\}%`\}\}/></div>\
+        </div>\
+\
+        \{/* IMPACT */\}\
+        <div className="impact-card mb-24">\
+          <div className="flex items-center gap-12 mb-20">\
+            <span style=\{\{fontSize:24\}\}>\uc0\u55356 \u57101 </span>\
+            <div>\
+              <div style=\{\{fontFamily:'Fraunces,serif',fontSize:20,fontWeight:700\}\}>Tu impacto ambiental</div>\
+              <div style=\{\{fontSize:13,opacity:0.8\}\}>Gracias a tus intercambios y ventas</div>\
+            </div>\
+          </div>\
+          <div className="impact-grid">\
+            <div style=\{\{textAlign:'center'\}\}>\
+              <div style=\{\{fontSize:14,opacity:0.7,marginBottom:6\}\}>\uc0\u55357 \u56487  Agua ahorrada</div>\
+              <div className="impact-num">\{impact.water.toLocaleString()\}L</div>\
+              <div style=\{\{fontSize:12,opacity:0.6,marginTop:4\}\}>\uc0\u8776  \{Math.round(impact.water/150)\} duchas</div>\
+            </div>\
+            <div style=\{\{textAlign:'center'\}\}>\
+              <div style=\{\{fontSize:14,opacity:0.7,marginBottom:6\}\}>\uc0\u55356 \u57151  CO\u8322  evitado</div>\
+              <div className="impact-num">\{impact.co2\}kg</div>\
+              <div style=\{\{fontSize:12,opacity:0.6,marginTop:4\}\}>\uc0\u8776  \{Math.round(impact.co2/0.21)\} km en auto</div>\
+            </div>\
+            <div style=\{\{textAlign:'center'\}\}>\
+              <div style=\{\{fontSize:14,opacity:0.7,marginBottom:6\}\}>\uc0\u55357 \u56407  Prendas circulares</div>\
+              <div className="impact-num">\{impact.items\}</div>\
+              <div style=\{\{fontSize:12,opacity:0.6,marginTop:4\}\}>fuera del basurero</div>\
+            </div>\
+          </div>\
+        </div>\
+\
+        \{/* ACHIEVEMENTS */\}\
+        <div className="section-title serif mb-8" style=\{\{fontSize:20\}\}>Logros</div>\
+        <div className="achievement-grid mb-24">\
+          \{achievements.map(a=>(\
+            <div key=\{a.name\} className=\{`achievement$\{a.unlocked?'':' locked'\}`\}>\
+              <div className="achievement-icon">\{a.icon\}</div>\
+              <div className="achievement-name">\{a.name\}</div>\
+              <div className="achievement-sub">\{a.sub\}</div>\
+            </div>\
+          ))\}\
+        </div>\
+\
+        \{/* MY ITEMS */\}\
+        \{userItems.length>0&&<>\
+          <div className="section-title serif mb-16" style=\{\{fontSize:20\}\}>Mis prendas</div>\
+          <div className="items-grid mb-24">\
+            \{userItems.map(item=>(\
+              <div key=\{item.id\} className="card item-card" style=\{\{cursor:'default'\}\}>\
+                <img src=\{item.photos[0]\} alt=\{item.title\} className="item-card-img"/>\
+                <div className="item-card-body">\
+                  <div className="item-card-title">\{item.title\}</div>\
+                  <div className="item-card-meta">\
+                    <span>\{item.swapOnly?<span className="tag tag-swap" style=\{\{fontSize:11\}\}>\uc0\u55357 \u56580  Swap</span>:`$$\{item.price\}`\}</span>\
+                    <span style=\{\{fontSize:11\}\}>\uc0\u10084 \u65039  \{item.likes\}</span>\
+                  </div>\
+                </div>\
+              </div>\
+            ))\}\
+          </div>\
+        </>\}\
+      </div>\
+    </div>\
+  );\
+\}\
+\
+// \uc0\u9472 \u9472  ITEM DETAIL MODAL \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+function ItemDetailModal(\{item,currentUser,allItems,onClose,onSwap,onBuy\})\{\
+  const [photoIdx,setPhotoIdx]=useState(0);\
+  const [showChat,setShowChat]=useState(false);\
+  const [showSwapSelect,setShowSwapSelect]=useState(false);\
+  const [selectedSwapItem,setSelectedSwapItem]=useState(null);\
+  const [chatMsg,setChatMsg]=useState("");\
+  const [chatHistory,setChatHistory]=useState([\
+    \{from:"other",text:"\'a1Hola! \'bfSigues interesada en la prenda?",time:"10:30"\},\
+    \{from:"me",text:"S\'ed! \'bfEst\'e1 disponible para swap?",time:"10:32"\},\
+  ]);\
+\
+  const itemUser=MOCK_USERS.find(u=>u.id===item.userId);\
+  const myItems=allItems.filter(i=>i.userId===currentUser?.id);\
+  const dist=currentUser?distanceKm(currentUser.lat,currentUser.lng,item.lat,item.lng):null;\
+\
+  const sendMsg=()=>\{\
+    if(!chatMsg.trim())return;\
+    const now=new Date().toLocaleTimeString('es',\{hour:'2-digit',minute:'2-digit'\});\
+    setChatHistory(h=>[...h,\{from:"me",text:chatMsg,time:now\}]);\
+    setChatMsg("");\
+    setTimeout(()=>setChatHistory(h=>[...h,\{from:"other",text:"\'a1Genial! Podemos acordar un punto de encuentro en la Condesa \uc0\u55357 \u56842 ",time:now\}]),1200);\
+  \};\
+\
+  return(\
+    <div className="modal-overlay" onClick=\{e=>e.target===e.currentTarget&&onClose()\}>\
+      <div className="modal" style=\{\{maxWidth:560\}\}>\
+        <div className="modal-handle"/>\
+        <div style=\{\{position:'relative'\}\}>\
+          <button onClick=\{onClose\} style=\{\{position:'absolute',top:-8,right:-8,zIndex:10,background:'var(--charcoal)',border:'none',color:'white',borderRadius:'50%',width:32,height:32,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center'\}\}><Ic.X/></button>\
+\
+          \{/* Photos */\}\
+          <div className="item-photos" style=\{\{maxHeight:340\}\}>\
+            <img src=\{item.photos[photoIdx]\} alt=""/>\
+            \{item.photos.length>1&&<div className="photo-dots">\
+              \{item.photos.map((_,i)=><div key=\{i\} className=\{`photo-dot$\{i===photoIdx?' active':''\}`\} onClick=\{()=>setPhotoIdx(i)\} style=\{\{cursor:'pointer'\}\}/>)\}\
+            </div>\}\
+          </div>\
+\
+          <div style=\{\{padding:'20px 4px 0'\}\}>\
+            <div className="flex items-center justify-between mb-8">\
+              <h2 style=\{\{fontFamily:'Fraunces,serif',fontSize:22,fontWeight:700\}\}>\{item.title\}</h2>\
+              \{item.swapOnly?<span className="tag tag-swap">\uc0\u55357 \u56580  Solo Swap</span>:<span style=\{\{fontFamily:'Fraunces,serif',fontSize:22,fontWeight:700,color:'var(--olive-dark)'\}\}>$ \{item.price\}</span>\}\
+            </div>\
+\
+            <div className="flex gap-8 mb-12" style=\{\{flexWrap:'wrap'\}\}>\
+              <span className="tag tag-olive">\{item.category\}</span>\
+              <span className="tag tag-olive">Talla \{item.size\}</span>\
+              <span className="tag tag-olive">\{item.condition\}</span>\
+              \{item.brand&&<span className="tag tag-terra">\{item.brand\}</span>\}\
+              \{dist&&<span className="tag" style=\{\{background:'#f5f0eb',color:'var(--text)'\}\}>\uc0\u55357 \u56525  \{dist\} km</span>\}\
+            </div>\
+\
+            <p style=\{\{fontSize:14,lineHeight:1.7,color:'var(--text-light)',marginBottom:16\}\}>\{item.description\}</p>\
+\
+            \{/* Seller */\}\
+            \{itemUser&&<div className="card" style=\{\{padding:14,marginBottom:16,boxShadow:'none',background:'var(--cream)',display:'flex',alignItems:'center',gap:14\}\}>\
+              <img src=\{itemUser.avatar\} alt="" style=\{\{width:44,height:44,borderRadius:'50%',objectFit:'cover'\}\}/>\
+              <div style=\{\{flex:1\}\}>\
+                <div style=\{\{fontWeight:600\}\}>\{itemUser.name\}</div>\
+                <div className="flex items-center gap-8 mt-8">\
+                  <Stars rating=\{itemUser.rating\} size=\{13\}/>\
+                  <span style=\{\{fontSize:13,color:'var(--text-light)'\}\}>\{itemUser.rating\} \'b7 \{itemUser.exchanges\} swaps</span>\
+                </div>\
+              </div>\
+              <button className="btn btn-ghost btn-sm" onClick=\{()=>setShowChat(!showChat)\}><Ic.MessageCircle/> Chat</button>\
+            </div>\}\
+\
+            \{/* CHAT */\}\
+            \{showChat&&<div className="card" style=\{\{padding:16,marginBottom:16,boxShadow:'none',border:'1.5px solid var(--beige)'\}\}>\
+              <div style=\{\{fontWeight:600,marginBottom:12\}\}>\uc0\u55357 \u56492  Chat con \{itemUser?.name\}</div>\
+              <div className="chat-messages">\
+                \{chatHistory.map((msg,i)=>(\
+                  <div key=\{i\} className=\{`chat-msg $\{msg.from==='me'?'sent':'recv'\}`\}>\
+                    \{msg.text\}<div className="chat-time">\{msg.time\}</div>\
+                  </div>\
+                ))\}\
+              </div>\
+              <div className="flex gap-8 mt-12">\
+                <input className="input" placeholder="Escribe un mensaje..." value=\{chatMsg\} onChange=\{e=>setChatMsg(e.target.value)\} onKeyDown=\{e=>e.key==='Enter'&&sendMsg()\} style=\{\{flex:1\}\}/>\
+                <button className="btn btn-primary btn-icon" onClick=\{sendMsg\}><Ic.Send/></button>\
+              </div>\
+            </div>\}\
+\
+            \{/* SWAP SELECT */\}\
+            \{showSwapSelect&&<div className="card" style=\{\{padding:16,marginBottom:16,boxShadow:'none',border:'1.5px solid var(--beige)'\}\}>\
+              <div style=\{\{fontWeight:600,marginBottom:12\}\}>\uc0\u55357 \u56580  Selecciona qu\'e9 ofreces a cambio</div>\
+              \{myItems.length>0\
+                ?<div className="swap-item-select">\
+                  \{myItems.map(mi=>(\
+                    <div key=\{mi.id\} className=\{`swap-item-opt$\{selectedSwapItem?.id===mi.id?' selected':''\}`\} onClick=\{()=>setSelectedSwapItem(mi)\}>\
+                      <img src=\{mi.photos[0]\} alt="" style=\{\{width:'100%',aspectRatio:'1',objectFit:'cover',borderRadius:8,marginBottom:8\}\}/>\
+                      <div style=\{\{fontSize:12,fontWeight:600\}\}>\{mi.title\}</div>\
+                      <div style=\{\{fontSize:11,color:'var(--text-light)'\}\}>\{mi.size\}</div>\
+                    </div>\
+                  ))\}\
+                </div>\
+                :<div style=\{\{textAlign:'center',padding:'20px 0',color:'var(--text-light)'\}\}>\
+                  <div style=\{\{fontSize:32\}\}>\uc0\u55357 \u56407 </div>\
+                  <div style=\{\{fontSize:14,marginTop:8\}\}>No tienes prendas para intercambiar</div>\
+                </div>\}\
+              \{selectedSwapItem&&<button className="btn btn-olive w-full mt-16" style=\{\{marginTop:16\}\} onClick=\{()=>\{onSwap(item,selectedSwapItem);onClose();\}\}>Proponer intercambio \uc0\u10024 </button>\}\
+            </div>\}\
+\
+            \{/* CTA */\}\
+            <div className="flex gap-12">\
+              \{item.swapOnly||showSwapSelect\
+                ?<button className="btn btn-primary" style=\{\{flex:1\}\} onClick=\{()=>setShowSwapSelect(!showSwapSelect)\}>\{showSwapSelect?'Cancelar':'\uc0\u55357 \u56580  Proponer Swap'\}</button>\
+                :<>\
+                  <button className="btn btn-primary" style=\{\{flex:1\}\} onClick=\{()=>\{onBuy(item);onClose();\}\}>Comprar \'95 $\{item.price\} MXN</button>\
+                  <button className="btn btn-ghost" onClick=\{()=>setShowSwapSelect(!showSwapSelect)\}>\uc0\u55357 \u56580  Swap</button>\
+                </>\}\
+            </div>\
+          </div>\
+        </div>\
+      </div>\
+    </div>\
+  );\
+\}\
+\
+// \uc0\u9472 \u9472  MAIN APP \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+function App()\{\
+  const [currentUser,setCurrentUser]=useState(null);\
+  const [page,setPage]=useState("home");\
+  const [items,setItems]=useState(MOCK_ITEMS);\
+  const [likedItems,setLikedItems]=useState([]);\
+  const [selectedItem,setSelectedItem]=useState(null);\
+  const [toast,setToast]=useState(null);\
+\
+  const showToast=msg=>setToast(msg);\
+  const handleLogin=user=>setCurrentUser(user);\
+  const handleLike=id=>setLikedItems(l=>l.includes(id)?l.filter(i=>i!==id):[...l,id]);\
+  const handleUpload=item=>\{\
+    setItems(prev=>[item,...prev]);\
+    setCurrentUser(u=>(\{...u,points:u.points+50\}));\
+    showToast("\'a1Prenda publicada! +50 puntos \uc0\u55356 \u57151 ");\
+    setPage("home");\
+  \};\
+  const handleSwap=()=>\{\
+    setCurrentUser(u=>(\{...u,exchanges:u.exchanges+1,points:u.points+150\}));\
+    showToast("\'a1Swap propuesto! +150 puntos cuando se confirme \uc0\u55357 \u56580 ");\
+  \};\
+  const handleBuy=()=>\{\
+    setCurrentUser(u=>(\{...u,sales:u.sales+1,points:u.points+100\}));\
+    showToast("\'a1Compra completada! +100 puntos \uc0\u55356 \u57225 ");\
+  \};\
+\
+  if(!currentUser)return <AuthPage onLogin=\{handleLogin\}/>;\
+\
+  const navItems=[\
+    \{id:"home",label:"Inicio",Icon:Ic.Home\},\
+    \{id:"map",label:"Mapa",Icon:Ic.Map\},\
+    \{id:"upload",label:"Subir",Icon:Ic.Plus\},\
+    \{id:"profile",label:"Perfil",Icon:Ic.User\},\
+  ];\
+\
+  return(\
+    <div className="app">\
+      \{/* TOP NAV */\}\
+      <nav className="nav">\
+        <div className="nav-logo" onClick=\{()=>setPage("home")\}>re<span>wear</span></div>\
+        <div className="flex items-center gap-8">\
+          \{navItems.map(n=><button key=\{n.id\} className=\{`nav-tab$\{page===n.id?' active':''\}`\} onClick=\{()=>setPage(n.id)\}>\{n.label\}</button>)\}\
+        </div>\
+        <div className="nav-actions">\
+          <div className="relative">\
+            <img src=\{currentUser.avatar\} alt="" className="nav-avatar" onClick=\{()=>setPage("profile")\}/>\
+            <div className="notif-dot"/>\
+          </div>\
+        </div>\
+      </nav>\
+\
+      \{/* PAGES */\}\
+      \{page==="home"&&<HomePage currentUser=\{currentUser\} items=\{items\} likedItems=\{likedItems\} onLike=\{handleLike\} onItemClick=\{setSelectedItem\}/>\}\
+      \{page==="map"&&<MapPage currentUser=\{currentUser\} items=\{items\} onItemClick=\{setSelectedItem\}/>\}\
+      \{page==="upload"&&<UploadPage currentUser=\{currentUser\} onUpload=\{handleUpload\}/>\}\
+      \{page==="profile"&&<ProfilePage currentUser=\{currentUser\} items=\{items\}/>\}\
+\
+      \{/* BOTTOM NAV MOBILE */\}\
+      <nav className="bottom-nav">\
+        <div className="bottom-nav-inner">\
+          \{navItems.map(n=>(\
+            <button key=\{n.id\} className=\{`bnav-btn$\{page===n.id?' active':''\}`\} onClick=\{()=>setPage(n.id)\}>\
+              \{n.id==="upload"\
+                ?<div style=\{\{width:44,height:44,background:page==="upload"?'var(--charcoal)':'var(--olive)',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',color:'white',marginTop:-8,boxShadow:'0 4px 12px rgba(0,0,0,0.2)'\}\}><n.Icon/></div>\
+                :<n.Icon/>\}\
+              \{n.id!=="upload"&&n.label\}\
+            </button>\
+          ))\}\
+        </div>\
+      </nav>\
+\
+      \{/* MODAL */\}\
+      \{selectedItem&&<ItemDetailModal item=\{selectedItem\} currentUser=\{currentUser\} allItems=\{items\} onClose=\{()=>setSelectedItem(null)\} onSwap=\{handleSwap\} onBuy=\{handleBuy\}/>\}\
+\
+      \{/* TOAST */\}\
+      \{toast&&<Toast msg=\{toast\} onClose=\{()=>setToast(null)\}/>\}\
+    </div>\
+  );\
+\}\
+\
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);\
+</script>\
+</body>\
+</html>ht}
